@@ -10,6 +10,7 @@ nrow(available.packages())
 install.packages('amap')
 install.packages(c('foreign', 'haven'))
 
+dplyr
 #Load package
 library(amap)
 
@@ -35,7 +36,7 @@ install.packages('amap')
 remove.packages("amap")
 require('amap')# check if unistalled
 find.package("amap")
-
+install.packages('easypackages')
 
 #Install Multiple Packages----
 easypackages::packages("plyr", "psych", "abc")

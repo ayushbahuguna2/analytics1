@@ -80,17 +80,24 @@ sd(x6)
 #removing decimal places/ round----
 floor(10.35)
 x6
+(x6 = rnorm(n=10, mean=5, sd=1))
 floor(x6)
+plot(x6)
+density(x6)
 ceiling(x6)
-trunc(x6)
-round(x6,digits=2)  #round to decimal places
-signif(x6,digits=3)  #round to specified no of digits
-
+trunc(x6)#remove decimal part
+round(x6,digits=3)  #round to decimal places
+signif(x6,digits=5)  #round to specified no of digits
+x6d = c(05.24, 5.24)
+signif(x6d,digits=3)
 # Basic operations on vector----
 x1
 sum(x1)
 cumsum(x1) # cumulative sum
 cumprod(x1)
+x2a = c(2:14)
+x2a*2
+x2a/4
 x1 * 2  # multiple by 2
 x1 * c(2,4) #multiple 2 & 4 alternatively
 x1
@@ -98,7 +105,7 @@ x1
 x1/2
 x1 ^ 2
 x1 ** 2
-x1 %% 2
+x2a %% 3 #Modulo/remainder
 sqrt(x1)
 sin(x1)
 
@@ -114,40 +121,61 @@ mean(x1)
 median(x1)
 mode(x1) #this mode is not stats mode
 length(x1)  #no of values
-x1==x2
+x1==x2 #check corresponding values if they are equal gives true otherwise false
 5 < 6
 5 > 6
 5 == 6
 5 <= 6
-
+x1 = c(1:10)
 #attributes----
-str(x1)
-class(x1)
-typeof(x1)
+str(x1) #structure of vector
+class(x1)  #data structure type
+?type
+typeof(x1) 
 summary(x1)
-head(x1)
-head(x1,n=3)
-tail(x1)
+quantile(x1, c(.1, .3, .6, .7)) #quantile at given percentile
+quantile(x1,seq(0,1,.01))
+seq(2,10)
+
+head(x1) #print first 6 values
+head(x1,n=3) 
+tail(x1, n=2) #last 6
 
 
 #missing values in vector (NA)----
 (x9 = c(1,5,14,NA,20,17, NA,9))
+length(x9)
 sum(x9) #error
+sum(x9, na.rm=T)
+sum(c(TRUE, F,T, F, T)) #equates TRUE with 1 and False with 0 #count number of trues
+?is
 is.na(x9) #T & F 
 #how many missing values
 sum(is.na(x9))
+y1=sample(1:100)
+y1[c(30,50,70,81)] = NA #replacing 30th position value with NA
+y1
+is.na(y1)
+sum(is.na(y1))
+sum(y1, na.rm=T)
 sum(x9, na.rm=T)
-na.omit(x9)
+
+
+na.omit(y1)
 na.exclude(x9)
+
 #impute
 x9[is.na(x9)] = mean(x9, na.rm=T)
 x9
-
+mean(x9,na.rm=T)
+x9[is.na(x9)] = mean(x9, na.rm=T)
+x9[is.na(x9)]=0 #replace NA with 0
+x9
 #Other Vectors----
 class(x1)
 (x11 = c(10.4, 12.4, 15, 20)) #numeric
 class(x11)
-(x12 = c(3L,6L,9L, 15L)) #integer
+(x12 = c(3L,6L,9L, 15L)) #integer L is used to save it as an integer
 class(x12)
 
 #character----
@@ -155,18 +183,20 @@ class(x12)
 class(x13)
 toupper(x13)
 casefold(x13,upper=T)
-
+#library(stringr)
 (x14 = c("BUSINESS", "MARKETING", 'FINANCIAL'))
 tolower(x14)
 casefold(x14,upper=F)
 
 chartr("BMF","bmF",x14) #replace BMF with bmF
+x14
 strsplit(x14, "E") #split at point E is found
 
 
 #Logical Vectors----
 (x20 = c(TRUE, FALSE, T, F, TRUE))
 class(x20)
+length(x20)
 sum(x20) #how many T
 x20[x20 ==T ] # T=1
 table(x20)  #T & F count
